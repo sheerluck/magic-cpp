@@ -12,4 +12,4 @@ find_package(mp++ REQUIRED)
 
 add_executable(magic main.cpp)
 
-target_link_libraries(magic fmt::fmt mp++::mp++)
+target_link_libraries(magic fmt::fmt mp++::mp++ quadmath)

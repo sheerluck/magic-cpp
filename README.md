@@ -5,6 +5,13 @@ I have stolen `type_name` from __mppp__ and `tuple_for_each` from __obake__
 
 This program prints these lines:
 ```
+Printing limits for the type 'bool' (1 byte):'
+Lowest  : 0
+Min     : 0
+Max     : 1
+Digits  : 1
+Digits10: 0
+------------
 Printing limits for the type 'unsigned char' (1 byte):'
 Lowest  : 0
 Min     : 0
@@ -95,5 +102,12 @@ Min     : 3.3621e-4932
 Max     : 1.18973e+4932
 Digits  : 64
 Digits10: 18
+------------
+Printing limits for the type 'boost::multiprecision::number<boost::multiprecision::backends::float128_backend, (boost::multiprecision::expression_template_option)0>' (16 bytes):'
+Lowest  : -1.18973149535723176508575932662800702e+4932
+Min     : 3.3621031431120935062626778173217526e-4932
+Max     : 1.18973149535723176508575932662800702e+4932
+Digits  : 113
+Digits10: 33
 ------------
 ```

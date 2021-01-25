@@ -1,5 +1,21 @@
 #include <fmt/core.h>
 #include <mp++/type_name.hpp>
+#include <boost/multiprecision/float128.hpp>
+using boost::multiprecision::float128;
+
+template <>
+struct fmt::formatter<float128> {
+  constexpr auto parse(format_parse_context& ctx) {
+    return ctx.end();
+  }
+
+  template <typename FormatContext>
+  auto format(const float128& x, FormatContext& ctx) {
+    std::ostringstream o;
+    o << std::setprecision(std::numeric_limits<float128>::max_digits10) << x;  
+    return format_to(ctx.out(), "{}", o.str());
+  }
+};
 
 template <typename Tuple, typename F>
 inline void tuple_for_each(Tuple &&t, F &&f)
@@ -15,6 +31,7 @@ inline void tuple_for_each(Tuple &&t, F &&f)
 int main()
 {
     using all_types = std::tuple<
+        bool,
         std::uint8_t,
         std::uint16_t,
         std::uint32_t,
@@ -27,7 +44,8 @@ int main()
            __int128_t,
         float,
         double,
-        long double>;
+        long double,
+        float128>;
 
     tuple_for_each(all_types{}, [](auto n) {
         using T = decltype(n);
